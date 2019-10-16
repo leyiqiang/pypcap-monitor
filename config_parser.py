@@ -25,18 +25,3 @@ class ConfigParser:
     @property
     def sniff_config(self):
         return self.config[SNIFF_CONFIG]
-
-    @property
-    def mode(self):
-        return self.config[MODE]
-
-    @property
-    def time_before(self):
-        if self.mode == AGGREGATE_MODE or self.mode == DELETE_AGGREGATED_DATA_MODE:
-            try:
-                time_before = int(self.config[TIME_BEFORE])
-                return time_before
-            # time before must be an integer
-            except Exception as e:
-                logging.error(e)
-                sys.exit()

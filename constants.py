@@ -7,14 +7,6 @@ SNIFF_CONFIG = 'sniff_config'
 IFACE = 'iface'
 FILTER = 'filter'
 
-MODE = 'mode'
-SNIFFING_MODE = 'sniffing'
-ADDING_DEVICE_MODE = 'adding_device'
-DELETE_AGGREGATED_DATA_MODE = 'delete_aggregated_data'
-AGGREGATE_MODE = 'aggregate'
-
-TIME_BEFORE = 'time_before'
-
 # for packet_sniffer
 IP = 'IP'
 TCP = 'TCP'
