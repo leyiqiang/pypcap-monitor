@@ -20,6 +20,8 @@ tmux detach
 sniff the data. Insert the sniffed data into a Redis database.
 2. [addDevices.py](./addDevices.py): Read the device mac and name information from
 a file in the router. Store the device information into the MongoDB
+3. [databases.py](./databases.py): A file that contains the implementation of supported databases. Including get data from database, remove data from database and aggregate data
+4. [start.py](./start.py): Start the project with configuration file.
 
 ## Config.yml File Explanation:
 make-run.sh runs the code with config.yml file
