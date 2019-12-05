@@ -1,11 +1,13 @@
 
 # pypcap-monitor
 A python project to sniff the internet traffic and stored it into 
-MongoDB database. 
+Redis database. 
+This project is modified based on pypcap-monitor code(https://github.com/VizIoT/pypcap-monitor)
 ## How To Run
 ```bash
+cd pypcap-monitor # go to the project folder
 tmux attach
-./make.sh-run.sh &
+./make-run.sh &
 ./kill &
 tmux detach
 ```
@@ -15,19 +17,24 @@ tmux detach
 
 ## Python File Explanation:
 1. [sniff.py](./sniff.py): Use [scapy](https://github.com/secdev/scapy) library to
-sniff the data. Insert the sniffed data into a MongoDB.
-2. [db_rolling.py](./db_rolling.py): Aggregate the data in the last two minutes
-3. [db_rolling2.py](./db_rolling2.py): delete the aggregated data 1 week before
-4. config.py: the MongoDB Address. This file should not be pushed
+sniff the data. Insert the sniffed data into a Redis database.
+2. config.py: the MongoDB Address. This file should not be pushed
 to GitHub. Use [config-example.py](./config-example.py) as an example.
 MONGO_DB_ADDRESS = '<MONGO_DB_ADDRESS>'.
 5. [addDevices.py](./addDevices.py): Read the device mac and name information from
 a file in the router. Store the device information into the MongoDB
 
-## Crontab Configuration
+## Config.yml File Explanation:
+make-run.sh runs the code with config.yml file
 ```
-* * * * * python3 /home/ubuntu/pypcap-monitor/db_rolling.py # every minute
-*/5 * * * * python3 /home/ubuntu/pypcap-monitor/db_rolling2.py # every 5 minutes
+db_class_name: '<DB_CLASS_NAME>' # currently supports mongodb(MongodbDatabase) and redis(RedisDatabase)
+db_host: '<DB_HOST>'
+db_port: '<DB_PORT>'
+sniff_config: # this configuration is only needed in sniffing mode
+  iface: '<INTERFACE>'
+  filter: '<PACKET_FILTER>'
+mode: '<MODE>' # mode is one of sniffing, adding_device, delete_aggregated_data, aggregate
+time_before: '<TIME_BEFORE>' # time before in seconds, this field is only required in delete_aggregated_data and aggregate mode
 ```
 
 ## Scapy Configuration
