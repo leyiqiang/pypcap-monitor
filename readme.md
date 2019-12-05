@@ -18,10 +18,7 @@ tmux detach
 ## Python File Explanation:
 1. [sniff.py](./sniff.py): Use [scapy](https://github.com/secdev/scapy) library to
 sniff the data. Insert the sniffed data into a Redis database.
-2. config.py: the MongoDB Address. This file should not be pushed
-to GitHub. Use [config-example.py](./config-example.py) as an example.
-MONGO_DB_ADDRESS = '<MONGO_DB_ADDRESS>'.
-5. [addDevices.py](./addDevices.py): Read the device mac and name information from
+2. [addDevices.py](./addDevices.py): Read the device mac and name information from
 a file in the router. Store the device information into the MongoDB
 
 ## Config.yml File Explanation:
