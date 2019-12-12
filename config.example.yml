@@ -4,5 +4,3 @@ db_port: '<DB_PORT>'
 sniff_config: # this configuration is only needed in sniffing mode
   iface: '<INTERFACE>'
   filter: '<PACKET_FILTER>'
-mode: '<MODE>' # mode is one of sniffing, adding_device, delete_aggregated_data, aggregate
-time_before: '<TIME_BEFORE>' # time before in seconds, this field is only required in delete_aggregated_data and aggregate mode
